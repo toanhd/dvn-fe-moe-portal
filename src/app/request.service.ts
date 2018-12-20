@@ -27,7 +27,7 @@ export class RequestService {
             )
     }
 
-    rejectRequest(request) {
+    changeRequestStatus(request) {
         const headers = new Headers({'Content-Type': 'application/json'});
         const body = JSON.stringify(request);
         return this.http.patch(this.url + 'request', body, {headers: headers})

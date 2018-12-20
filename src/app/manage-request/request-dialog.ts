@@ -98,7 +98,7 @@ export class RequestDialogComponent implements OnInit {
                     request_id: this.data.reqID,
                     status: 'mailsent'
                 };
-                this.requestService.rejectRequest(req).subscribe(
+                this.requestService.changeRequestStatus(req).subscribe(
                     data => {
                     },
                     err => {
@@ -169,7 +169,6 @@ export class RequestDialogComponent implements OnInit {
         </tr>
         `
     }
-
 
     createMailHTML(transcriptTable, studentInfo) {
         return `
@@ -419,7 +418,7 @@ export class RequestDialogComponent implements OnInit {
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                    
                                     <p style="margin-top: 1;margin-bottom: 0; text-align: left">
-                                        <strong>Cổng thông xin xác thực bảng điểm sinh viên
+                                        <strong>Cổng thông tin xác thực bảng điểm sinh viên
                                         </strong>
                                     </p>
                                     <p style="margin: 0; text-align: left; padding: 0">
@@ -439,7 +438,6 @@ export class RequestDialogComponent implements OnInit {
                     </td>
                 </tr>
                 <!-- 1 Column Text + Button : END -->
-
                 <tr>
                     <td style="background-color: #ffffff;">
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
@@ -520,6 +518,6 @@ export class RequestDialogComponent implements OnInit {
 </body>
 
 </html>
-`
+        `
     }
 }
