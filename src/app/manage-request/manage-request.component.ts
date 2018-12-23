@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RequestService} from '../request.service';
+import {RequestService} from '../request-services/request.service';
 import {TranscriptService} from '../transcript-services/transcript-service.service';
 import {RequestDialogComponent} from './request-dialog';
 import {MatDialog} from '@angular/material';

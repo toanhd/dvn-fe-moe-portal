@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {TranscriptService} from '../transcript-services/transcript-service.service';
 import {StudentService} from '../student-services/student.service';
-import {RequestService} from '../request.service';
+import {RequestService} from '../request-services/request.service';
 
 declare var $: any;
 
