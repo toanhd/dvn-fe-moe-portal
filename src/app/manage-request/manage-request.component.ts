@@ -12,7 +12,7 @@ declare var $: any;
     styleUrls: ['./manage-request.component.scss']
 })
 export class ManageRequestComponent implements OnInit {
-    displayedColumns: string[] = ['requester', 'company', 'email', 'reason', 'student', 'status', 'action-update', 'action-delete'];
+    displayedColumns: string[] = ['requester', 'time', 'company', 'email', 'reason', 'student', 'status', 'action-update', 'action-delete'];
     dataSource;
     spinnerLoad = false;
 
@@ -33,7 +33,6 @@ export class ManageRequestComponent implements OnInit {
             data => {
                 this.dataSource = data.response.requests;
                 this.spinnerLoad = false;
-
             },
             err => {
                 this.spinnerLoad = false;

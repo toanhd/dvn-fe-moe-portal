@@ -22,6 +22,12 @@
                                         *matCellDef="let element">{{element.requester}} </td>
                                 </ng-container>
 
+                                <ng-container matColumnDef="time">
+                                    <th mat-header-cell *matHeaderCellDef class="text-primary">Thời gian</th>
+                                    <td [className]="element.status == 'rejected'?'bg-gray':''" mat-cell
+                                        *matCellDef="let element">{{element.createdAt | date : 'hh:mm - dd/mm/yyyy'}} </td>
+                                </ng-container>
+
                                 <ng-container matColumnDef="company">
                                     <th mat-header-cell *matHeaderCellDef class="text-primary"> Doanh nghiệp/Tổ chức</th>
                                     <td [className]="element.status == 'rejected'?'bg-gray':''" mat-cell

@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AppService} from '../app-services.service';
+
 
 @Component({
     selector: 'app-login',
@@ -9,19 +12,41 @@ import {FormGroup, FormControl} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
     loginForm = new FormGroup({
-        username: new FormControl(''),
-        pwd: new FormControl(''),
+        username: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
     });
+    loginMess;
 
-    constructor() {
+    constructor(
+        private authenService: AppService,
+        private router: Router
+    ) {
     }
 
     ngOnInit() {
     }
 
-    onSubmit() {
-        console.log(this.loginForm.value);
+    onLogin() {
+        this.loginMess = undefined;
+        if (this.loginForm.valid) {
+            const user = this.loginForm.value;
+            user.port = 'moe';
+            this.authenService.logIn(user).subscribe(
+                data => {
+                    if (data.response.login) {
+                        localStorage.setItem('token', data.response.token);
+                        this.router.navigateByUrl('/manage-request');
+                    }
+                },
+                err => {
+                    if (err.message === 'Unauthorized') {
+                        this.loginMess = 'Tài khoản không có quyền truy cập!'
+                    } else {
+                        this.loginMess = 'Sai thông tin đăng nhập!'
+                    }
+                }
+            )
+        }
     }
-
 
 }

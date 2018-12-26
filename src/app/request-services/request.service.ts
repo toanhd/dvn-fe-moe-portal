@@ -17,7 +17,7 @@ export class RequestService {
 
     getAllRequest() {
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.get(this.url + 'request', {headers: headers})
+        return this.http.get(this.url + 'request/getreqs', {headers: headers})
             .pipe(map((response: Response) => {
                     return {
                         response: response.json(),
@@ -30,7 +30,7 @@ export class RequestService {
     changeRequestStatus(request) {
         const headers = new Headers({'Content-Type': 'application/json'});
         const body = JSON.stringify(request);
-        return this.http.patch(this.url + 'request', body, {headers: headers})
+        return this.http.patch(this.url + 'request/reqstatus', body, {headers: headers})
             .pipe(map((response: Response) => {
                     return {
                         response: response.json(),
@@ -43,7 +43,7 @@ export class RequestService {
     sendMail(mail) {
         const headers = new Headers({'Content-Type': 'application/json'});
         const body = JSON.stringify(mail);
-        return this.http.post(this.url + 'request/send-mail', body, {headers: headers})
+        return this.http.post(this.url + 'request/sendmail', body, {headers: headers})
             .pipe(map((response: Response) => {
                     return {
                         response: response.json(),
